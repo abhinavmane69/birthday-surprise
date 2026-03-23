@@ -1,166 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday Shweta ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
-
-<style>
-body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:#000;
-    color:#fff;
-    text-align:center;
-    overflow:hidden;
-}
-
-/* PASSWORD SCREEN */
-.lock{
-    position:fixed;
-    width:100%;
-    height:100vh;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
-    background:black;
-    z-index:20;
-}
-.lock input{
-    padding:10px;
-    border-radius:10px;
-    border:none;
-    margin:10px;
-}
-.lock button{
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-    background:#ff4e50;
-    color:white;
-}
-
-/* GIFT */
-.gift{
-    display:none;
-    height:100vh;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-}
-.gift-box{
-    font-size:80px;
-    cursor:pointer;
-    animation: bounce 1s infinite;
-}
-@keyframes bounce{
-    0%,100%{transform:translateY(0)}
-    50%{transform:translateY(-20px)}
-}
-
-/* MENU */
-.menu{
-    display:none;
-    height:100vh;
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
-    gap:20px;
-}
-.menu button{
-    padding:15px 30px;
-    border:none;
-    border-radius:30px;
-    background:#ff4e50;
-    color:white;
-}
-
-/* PAGES */
-.page{
-    display:none;
-    padding:20px;
-    height:100vh;
-    overflow:auto;
-}
-
-/* TYPING */
-.typing{
-    max-width:600px;
-    margin:auto;
-    line-height:1.6;
-}
-
-/* SLIDESHOW */
-.slideshow img{
-    width:80%;
-    border-radius:20px;
-}
-
-/* BACK */
-.back{
-    margin:20px;
-    padding:10px 20px;
-    border:none;
-    border-radius:20px;
-}
-
-/* FLOAT */
-.heart,.flower{
-    position:fixed;
-    animation:float 6s linear infinite;
-}
-@keyframes float{
-    from{transform:translateY(100vh)}
-    to{transform:translateY(-10vh)}
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Shweta ❤️</title>
+    <style>
+        body { margin: 0; font-family: 'Arial', sans-serif; background: #ffebee; overflow-x: hidden; text-align: center; }
+        .page, #menu, #gift, #lock { display: none; height: 100vh; width: 100%; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; }
+        
+        /* Initial state - Show Lock Screen */
+        #lock { display: flex; background: #ffcdd2; }
+        
+        button { padding: 10px 20px; margin: 10px; border: none; border-radius: 20px; background: #e91e63; color: white; cursor: pointer; font-size: 1.1rem; }
+        .back { position: absolute; top: 20px; left: 20px; }
+        
+        .typing { font-size: 1.2rem; padding: 20px; color: #ad1457; line-height: 1.6; font-weight: bold; }
+        .slideshow img { width: 80%; max-width: 300px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
+        
+        .heart { position: fixed; top: -10vh; font-size: 20px; animation: fall 6s linear; z-index: 100; pointer-events: none; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
+    </style>
 </head>
-
 <body>
 
-<!-- PASSWORD -->
-<div class="lock" id="lock">
-    <h2>Enter Secret 💖</h2>
-    <input type="password" id="pass" placeholder="Enter password">
-    <button onclick="checkPass()">Unlock 🔓</button>
+<div id="lock">
+    <h2>🔒 Enter Secret Code</h2>
+    <input type="password" id="pass" placeholder="Try her name..." style="padding:10px; border-radius:10px; border:none;">
+    <button onclick="checkPass()">Unlock</button>
 </div>
 
-<!-- GIFT -->
-<div class="gift" id="gift">
-    <h2>🎁 Tap the Gift 🎁</h2>
-    <div class="gift-box" onclick="openGift()">🎁</div>
+<div id="gift">
+    <h1 style="font-size: 5rem; cursor: pointer;" onclick="openGift()">🎁</h1>
+    <p>Tap the gift to open!</p>
 </div>
 
-<!-- MENU -->
-<div class="menu" id="menu">
+<div id="menu">
     <h1>Happy Birthday Shweta ❤️</h1>
     <button onclick="openPage('shayari')">💖 Shayari</button>
     <button onclick="openPage('photos')">📸 Memories</button>
     <button onclick="share()">📱 Share</button>
 </div>
 
-<!-- SHAYARI -->
 <div class="page" id="shayari">
-<button class="back" onclick="back()">⬅ Back</button>
-<div class="typing" id="text"></div>
+    <button class="back" onclick="back()">⬅ Back</button>
+    <div class="typing" id="text"></div>
 </div>
 
-<!-- PHOTOS -->
 <div class="page" id="photos">
-<button class="back" onclick="back()">⬅ Back</button>
-<div class="slideshow">
-    <img id="slide" src="photo1.jpg.jpeg">
-</div>
+    <button class="back" onclick="back()">⬅ Back</button>
+    <div class="slideshow">
+        <img id="slide" src="photo1.jpg.jpeg" alt="Memories">
+    </div>
 </div>
 
-<!-- MUSIC -->
 <audio id="song" loop>
-<source src="song.mp3" type="audio/mpeg">
+    <source src="song.mp3" type="audio/mpeg">
 </audio>
 
+<script>
+const msg = `Ek ladki hai… thodi si pagal, thodi si pyaari si 💫
+Aaj uska birthday hai… meri duniya ki sabse khaas si 🎂✨
+Uski hasi mein jaise khushiyon ka jahaan basa ho 😊🌸
+Aur uske hone se hi mera har din haseen bana ho 💖
+
+Pagli kehti hai "main itni bhi special nahi…" 😌
+Par kaise samjhau use…
+Mere liye wo meri sabse khoobsurat aadat hai 💞
+
+Happy Birthday meri cutie si bestie 🎉💖
+Hamesha aise hi haste rehna… 🌙✨`;
+
+let i = 0;
+let isTyping = false;
+
+// PASSWORD CHECK
+function checkPass(){
+    // Tip: Use lowercase check to avoid errors if she types "Akduu"
+    if(document.getElementById('pass').value.toLowerCase() === "Akduu"){
+        document.getElementById('lock').style.display = 'none';
+        document.getElementById('gift').style.display = 'flex';
+    } else {
+        alert("Wrong password 😜 Hint: It's her name!");
+    }
+}
+
+// OPEN GIFT
+function openGift(){
+    document.getElementById('gift').style.display = 'none';
+    document.getElementById('menu').style.display = 'flex';
+    document.getElementById('song').play().catch(() => console.log("Audio waiting for interaction"));
+}
+
+// NAVIGATION
+function openPage(p){
+    document.getElementById('menu').style.display = 'none';
+    document.getElementById(p).style.display = 'flex'; // Changed to flex for centering
+    if(p === "shayari") {
+        i = 0; // Reset index
+        document.getElementById('text').innerHTML = ""; // Clear old text
+        typeText();
+    }
+}
+
+function back(){
+    document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
+    document.getElementById('menu').style.display = 'flex';
+}
+
+// TYPING LOGIC
+function typeText(){
+    let el = document.getElementById('text');
+    if(i < msg.length){
+        if(msg[i] === "\n") el.innerHTML += "<br>";
+        else el.innerHTML += msg[i];
+        i++;
+        setTimeout(typeText, 40);
+    }
+}
+
+// SLIDESHOW
+let images = ["photo1.jpg.jpeg", "photo2.jpg.jpeg", "photo3.jpg.jpeg", "photo4.jpg.jpeg"];
+let index = 0;
+setInterval(() => {
+    let imgElement = document.getElementById('slide');
+    if(imgElement) {
+        index = (index + 1) % images.length;
+        imgElement.src = images[index];
+    }
+}, 2000);
+
+// SHARE
+function share(){
+    let text = "Happy Birthday Shweta ❤️ Check this out:";
+    let url = window.location.href;
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + url)}`);
+}
+
+// FLOATING HEARTS
+setInterval(() => {
+    let h = document.createElement('div');
+    h.innerHTML = '❤️';
+    h.classList.add('heart');
+    h.style.left = Math.random() * 100 + 'vw';
+    document.body.appendChild(h);
+    setTimeout(() => h.remove(), 6000);
+}, 400);
+
+// SPARKLE ON CLICK
+document.body.addEventListener("click", e => {
+    let spark = document.createElement('div');
+    spark.innerHTML = '✨';
+    spark.style.position = 'fixed';
+    spark.style.left = e.clientX + 'px';
+    spark.style.top = e.clientY + 'px';
+    spark.style.pointerEvents = 'none';
+    document.body.appendChild(spark);
+    setTimeout(() => spark.remove(), 500);
+});
+</script>
+</body>
+</html>
 <script>
 // PASSWORD
 function checkPass(){

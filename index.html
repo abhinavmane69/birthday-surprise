@@ -53,9 +53,10 @@
     </div>
 </div>
 
-<audio id="song" loop>
+<audio id="song" autoplay loop preload="auto">
     <source src="song.mp3" type="audio/mpeg">
 </audio>
+
 
 <script>
 const msg = `Ek ladki hai… thodi si pagal, thodi si pyaari si 💫
@@ -119,7 +120,7 @@ function typeText(){
 }
 
 // SLIDESHOW
-let images = ["photo1.jpg.jpeg", "photo2.jpg.jpeg", "photo3.jpg.jpeg", "photo4.jpg.jpeg"];
+let images = ["photo1.jpg.jpeg", "photo2.jpg.jpeg", "photo3.jpg.jpeg", "photo4.jpg.jpeg",];
 let index = 0;
 setInterval(() => {
     let imgElement = document.getElementById('slide');

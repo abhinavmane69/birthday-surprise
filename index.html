@@ -43,9 +43,10 @@ h1{font-size:3em;animation:glow 2s infinite alternate}
 </div><div class="container" id="main">
     <h1>Happy Birthday Shweta ❤️</h1><div class="typing" id="text"></div>
 
-<audio id="song">
-    <source src="song.mp3" type="audio/mp3">
+<audio id="song" autoplay loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
 </audio>
+
 
 <div class="gallery">
     <div class="frame"><img src="photo1.jpg.jpeg"></div>
@@ -68,15 +69,30 @@ function start(){
 }
 
 // TYPING MESSAGE
-const msg=`Tu meri zindagi ka sabse khoobsurat hissa hai... \nTeri hasi meri duniya hai... \nAgar zindagi ek kahani hai, toh tu uski sabse haseen line hai... \nHappy Birthday 💖 Always be mine...`;
-let i=0;
-function typeText(){
- if(i<msg.length){
-  document.getElementById('text').innerHTML+=msg.charAt(i);
-  i++;
-  setTimeout(typeText,70);
- }
+const msg = `Tu meri zindagi ka sabse khoobsurat hissa hai... 
+Teri hasi meri duniya hai... 
+Agar zindagi ek kahani hai, toh tu uski sabse haseen line hai... 
+Happy Birthday 💖 Always be mine...`;
+
+let i = 0;
+
+function typeText() {
+  const element = document.getElementById('text');
+  
+  if (i < msg.length) {
+    // Check for newline characters and convert them to <br> tags
+    if (msg.charAt(i) === "\n") {
+      element.innerHTML += "<br>";
+    } else {
+      element.innerHTML += msg.charAt(i);
+    }
+    
+    i++;
+    setTimeout(typeText, 70);
+  }
 }
+
+
 
 // HEARTS
 setInterval(()=>{

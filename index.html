@@ -2,144 +2,102 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Happy Birthday SHWETA ❤️</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"><style>
-body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    overflow-x: hidden;
-    color: white;
-    text-align: center;
-}
+<title>Happy Birthday Shweta ❤️</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"><style>
+body{margin:0;font-family:'Poppins',sans-serif;background:#000;color:#fff;text-align:center;overflow:hidden}
 
-.container {
-    padding: 20px;
-}
+/* INTRO */
+.intro{position:fixed;width:100%;height:100vh;background:black;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:10}
+.intro h2{font-size:2em;animation:fade 2s infinite alternate}
+@keyframes fade{from{opacity:.3}to{opacity:1}}
+.intro button{padding:15px 30px;border:none;border-radius:30px;background:pink;font-size:18px;cursor:pointer}
 
-h1 {
-    font-size: 3em;
-    animation: glow 2s infinite alternate;
-}
+/* MAIN */
+.container{display:none;padding:20px}
+h1{font-size:3em;animation:glow 2s infinite alternate}
+@keyframes glow{from{text-shadow:0 0 10px white}to{text-shadow:0 0 40px #ff4e50}}
 
-@keyframes glow {
-    from { text-shadow: 0 0 10px white; }
-    to { text-shadow: 0 0 30px yellow; }
-}
+/* TYPING EFFECT */
+.typing{font-size:1.4em;margin:20px auto;max-width:600px;border-right:3px solid white;white-space:nowrap;overflow:hidden}
 
-.shayari {
-    margin: 25px;
-    font-size: 1.3em;
-    line-height: 2;
-    animation: fadeIn 3s ease-in-out;
-}
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;padding:20px}
+.frame{border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(255,255,255,0.3);transform:scale(.5);opacity:0;animation:zoom 1s forwards}
+.frame:nth-child(1){animation-delay:1s}
+.frame:nth-child(2){animation-delay:1.5s}
+.frame:nth-child(3){animation-delay:2s}
+.frame:nth-child(4){animation-delay:2.5s}
+@keyframes zoom{to{transform:scale(1);opacity:1}}
+.frame img{width:100%;height:280px;object-fit:cover}
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
-}
+/* FLOATING */
+.heart,.flower{position:fixed;animation:float 6s linear infinite}
+@keyframes float{from{transform:translateY(100vh)}to{transform:translateY(-10vh)}}
 
-.frame {
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
-    transition: transform 0.4s, box-shadow 0.4s;
-}
-
-.frame:hover {
-    transform: scale(1.08) rotate(1deg);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-}
-
-.frame img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-button {
-    padding: 12px 25px;
-    border: none;
-    border-radius: 25px;
-    background: white;
-    color: #ff4e50;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 20px;
-    font-size: 16px;
-}
-
-button:hover {
-    background: #ffe6ec;
-}
-
-.heart {
-    position: fixed;
-    color: red;
-    animation: float 5s linear infinite;
-}
-
-@keyframes float {
-    from { transform: translateY(100vh); opacity: 1; }
-    to { transform: translateY(-10vh); opacity: 0; }
-}
-
-</style></head>
-<body><div class="container">
-    <h1>Happy Birthday shweta ❤️</h1><div class="shayari">
-    Tu meri zindagi ka wo hissa hai,
-    jise lafzon mein bayaan karna mushkil hai...
-    
-    Teri hasi mein meri khushi basi hai,
-    jaise roshni mein subah ka sukoon basi hai...
-    
-    Tu saath ho toh duniya bhi apni lagti hai,
-    warna yeh mehfil bhi adhuri si lagti hai...
-    
-    Tere bina sab kuch hote hue bhi kuch nahi,
-    aur tu ho toh lagta hai kuch bhi kam nahi...
-    
-    Janamdin par bas itni dua hai meri,
-    tu hamesha muskuraati rahe... aur meri rahe 💖
-</div>
-
-<button onclick="playMusic()">Play Our Song 🎶</button>
+/* COUNTDOWN */
+#count{font-size:2em;margin-bottom:20px}
+</style></head><body><div class="intro" id="intro">
+    <h2>💖 Something Special For You 💖</h2>
+    <div id="count">3</div>
+    <button onclick="start()">Open Surprise 🎁</button>
+</div><div class="container" id="main">
+    <h1>Happy Birthday Shweta ❤️</h1><div class="typing" id="text"></div>
 
 <audio id="song">
-    <source src="your-song.mp3.mp3" type="audio/mpeg">
+    <source src="song.mp3.mp3" type="audio/mp3">
 </audio>
 
-<div class="desktope">
-    <div class="frame"><img src="photo1.jpg.jpeg"></div> 
+<div class="gallery">
+    <div class="frame"><img src="photo1.jpg.jpeg"></div>
     <div class="frame"><img src="photo2.jpg.jpeg"></div>
     <div class="frame"><img src="photo3.jpg.jpeg"></div>
-    <div class="frame"><img src="photo4.jpg.jpeg"></div>
     <div class="frame"><img src="photo4.jpg.jpeg"></div>
 </div>
 
 </div><script>
-function playMusic() {
-    document.getElementById("song").play();
+// COUNTDOWN
+let c=3;
+setInterval(()=>{if(c>1){c--;document.getElementById('count').innerText=c}},1000);
+
+// START
+function start(){
+ document.getElementById('intro').style.display='none';
+ document.getElementById('main').style.display='block';
+ document.getElementById('song').play();
+ typeText();
 }
 
-// floating flowers animation
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("flower");
-    heart.innerHTML = "🌸";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 10 + "px";
-    document.body.appendChild(flowers);
+// TYPING MESSAGE
+const msg=`Tu meri zindagi ka sabse khoobsurat hissa hai... \nTeri hasi meri duniya hai... \nAgar zindagi ek kahani hai, toh tu uski sabse haseen line hai... \nHappy Birthday 💖 Always be mine...`;
+let i=0;
+function typeText(){
+ if(i<msg.length){
+  document.getElementById('text').innerHTML+=msg.charAt(i);
+  i++;
+  setTimeout(typeText,50);
+ }
+}
 
-    setTimeout(() => {
-        flowers.remove();
-    }, 5000);
-}, 500);
+// HEARTS
+setInterval(()=>{
+ let h=document.createElement('div');
+ h.innerHTML='❤️';
+ h.classList.add('heart');
+ h.style.left=Math.random()*100+'vw';
+ h.style.fontSize=Math.random()*20+10+'px';
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},400);
+
+// FLOWERS
+setInterval(()=>{
+ let f=document.createElement('div');
+ f.innerHTML='🌸';
+ f.classList.add('flower');
+ f.style.left=Math.random()*100+'vw';
+ f.style.fontSize=Math.random()*20+10+'px';
+ document.body.appendChild(f);
+ setTimeout(()=>f.remove(),6000);
+},600);
 </script></body>
 </html>

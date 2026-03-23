@@ -1,0 +1,145 @@
+<!DOCTYPE html><html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday SHWETA ❤️</title><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet"><style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    overflow-x: hidden;
+    color: white;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    font-size: 3em;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px white; }
+    to { text-shadow: 0 0 30px yellow; }
+}
+
+.shayari {
+    margin: 25px;
+    font-size: 1.3em;
+    line-height: 2;
+    animation: fadeIn 3s ease-in-out;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.frame {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 25px rgba(0,0,0,0.4);
+    transition: transform 0.4s, box-shadow 0.4s;
+}
+
+.frame:hover {
+    transform: scale(1.08) rotate(1deg);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+.frame img {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4e50;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #ffe6ec;
+}
+
+.heart {
+    position: fixed;
+    color: red;
+    animation: float 5s linear infinite;
+}
+
+@keyframes float {
+    from { transform: translateY(100vh); opacity: 1; }
+    to { transform: translateY(-10vh); opacity: 0; }
+}
+
+</style></head>
+<body><div class="container">
+    <h1>Happy Birthday shweta ❤️</h1><div class="shayari">
+    Tu meri zindagi ka wo hissa hai,
+    jise lafzon mein bayaan karna mushkil hai...
+    
+    Teri hasi mein meri khushi basi hai,
+    jaise roshni mein subah ka sukoon basi hai...
+    
+    Tu saath ho toh duniya bhi apni lagti hai,
+    warna yeh mehfil bhi adhuri si lagti hai...
+    
+    Tere bina sab kuch hote hue bhi kuch nahi,
+    aur tu ho toh lagta hai kuch bhi kam nahi...
+    
+    Janamdin par bas itni dua hai meri,
+    tu hamesha muskuraati rahe... aur meri rahe 💖
+</div>
+
+<button onclick="playMusic()">Play Our Song 🎶</button>
+
+<audio id="song">
+    <source src="your-song.mp3.mp3" type="audio/mpeg">
+</audio>
+
+<div class="desktope">
+    <div class="frame"><img src="photo1.jpg.jpeg"></div> 
+    <div class="frame"><img src="photo2.jpg.jpeg"></div>
+    <div class="frame"><img src="photo3.jpg.jpeg"></div>
+    <div class="frame"><img src="photo4.jpg.jpeg"></div>
+    <div class="frame"><img src="photo4.jpg.jpeg"></div>
+</div>
+
+</div><script>
+function playMusic() {
+    document.getElementById("song").play();
+}
+
+// floating flowers animation
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("flower");
+    heart.innerHTML = "🌸";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 10 + "px";
+    document.body.appendChild(flowers);
+
+    setTimeout(() => {
+        flowers.remove();
+    }, 5000);
+}, 500);
+</script></body>
+</html>

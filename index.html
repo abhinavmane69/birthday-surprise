@@ -1,67 +1,156 @@
 
-<!DOCTYPE html>
+            <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Shweta ❤️</title>
-    <style>
-        body { margin: 0; font-family: 'Arial', sans-serif; background: #ffebee; overflow-x: hidden; text-align: center; }
-        .page, #menu, #gift, #lock { display: none; height: 100vh; width: 100%; flex-direction: column; align-items: center; justify-content: center; position: fixed; top: 0; left: 0; }
-        
-        /* Initial state - Show Lock Screen */
-        #lock { display: flex; background: #ffcdd2; z-index: 1000; }
-        
-        button { padding: 10px 20px; margin: 10px; border: none; border-radius: 20px; background: #e91e63; color: white; cursor: pointer; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
-        .back { position: absolute; top: 20px; left: 20px; z-index: 10; }
-        
-        .typing { font-size: 1.2rem; padding: 20px; color: #ad1457; line-height: 1.6; font-weight: bold; white-space: pre-wrap; }
-        .slideshow img { width: 85%; max-width: 320px; border-radius: 15px; box-shadow: 0 8px 20px rgba(0,0,0,0.2); transition: opacity 0.5s ease-in-out; }
-        
-        .heart { position: fixed; top: -10vh; font-size: 20px; animation: fall 6s linear; z-index: 100; pointer-events: none; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-        
-        input { padding: 12px; border-radius: 10px; border: 2px solid #e91e63; outline: none; text-align: center; font-size: 1rem; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Shweta ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #ffebee;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+.page, #menu, #gift, #lock {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+/* Lock screen visible first */
+#lock {
+    display: flex;
+    background: #ffcdd2;
+    z-index: 1000;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 20px;
+    background: #e91e63;
+    color: white;
+    cursor: pointer;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.typing {
+    font-size: 1.2rem;
+    padding: 20px;
+    color: #ad1457;
+    line-height: 1.6;
+    font-weight: bold;
+    white-space: pre-wrap;
+}
+
+.slideshow img {
+    width: 85%;
+    max-width: 320px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: opacity 0.5s;
+}
+
+/* Video */
+video {
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    top: -10vh;
+    font-size: 20px;
+    animation: fall 6s linear;
+    z-index: 100;
+}
+
+@keyframes fall {
+    to { transform: translateY(110vh) rotate(360deg); }
+}
+
+input {
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #e91e63;
+    text-align: center;
+}
+</style>
 </head>
+
 <body>
 
+<!-- LOCK -->
 <div id="lock">
     <h2>🔒 Enter Secret Code</h2>
     <input type="password" id="pass" placeholder="Enter 1203">
     <button onclick="checkPass()">Unlock</button>
 </div>
 
+<!-- GIFT -->
 <div id="gift">
-    <h1 style="font-size: 6rem; cursor: pointer; animation: bounce 1s infinite alternate;" onclick="openGift()">🎁</h1>
+    <h1 style="font-size: 6rem; cursor: pointer;" onclick="openGift()">🎁</h1>
     <p>Tap the gift to open Shweta!</p>
 </div>
 
+<!-- MENU -->
 <div id="menu">
     <h1>Happy Birthday Shweta ❤️</h1>
     <button onclick="openPage('shayari')">💖 Shayari</button>
     <button onclick="openPage('photos')">📸 Memories</button>
+    <button onclick="openPage('video')">🎥 Video</button>
     <button onclick="share()">📱 Share</button>
 </div>
 
+<!-- SHAYARI -->
 <div class="page" id="shayari">
     <button class="back" onclick="back()">⬅ Back</button>
     <div class="typing" id="text"></div>
 </div>
 
+<!-- PHOTOS -->
 <div class="page" id="photos">
     <button class="back" onclick="back()">⬅ Back</button>
     <div class="slideshow">
-        <img id="slide" src="photo1.jpg.jpeg" alt="Memories">
+        <img id="slide" src="photo1.jpg.jpeg">
     </div>
 </div>
 
-<audio id="song" loop preload="auto">
+<!-- VIDEO -->
+<div class="page" id="video">
+    <button class="back" onclick="back()">⬅ Back</button>
+    <video id="bdayVideo" width="85%" controls>
+        <source src="video.mp4" type="video/mp4">
+    </video>
+</div>
+
+<!-- AUDIO -->
+<audio id="song" loop>
     <source src="song.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-// CONFIGURATION
+
+// MESSAGE
 const msg = `Ek ladki hai… thodi si pagal, thodi si pyaari si 💫
 Aaj uska birthday hai… meri duniya ki sabse khaas si 🎂✨
 Uski hasi mein jaise khushiyon ka jahaan basa ho 😊🌸
@@ -71,107 +160,105 @@ Pagli kehti hai "main itni bhi special nahi…" 😌
 Par kaise samjhau use…
 Mere liye wo meri sabse khoobsurat aadat hai 💞
 
-Happy Birthday meri cutie si bestie 🎉💖
-Hamesha aise hi haste rehna… 🌙✨`;
+Happy Birthday meri cutie si bestie 🎉💖`;
 
 let images = [
-    "photo1.jpg.jpeg", "photo2.jpg.jpeg", "photo3.jpg.jpeg", "photo4.jpg.jpeg",
-    "IMG-20260311-WA0143.jpg", "IMG_20260119_142925.jpg", "IMG_20260221_121246.jpg",
-    "IMG_20260221_131914.jpg", "IMG_20260226_092224.jpg", "MVIMG_20260310_165915.jpg",
-    "Snapchat-1157924051.jpg"
+"photo1.jpg.jpeg",
+"photo2.jpg.jpeg",
+"photo3.jpg.jpeg"
 ];
 
 let i = 0;
 let index = 0;
-let typingActive = false;
 
-// 1. PASSWORD CHECK (Corrected to 1203)
+// PASSWORD
 function checkPass(){
     if(document.getElementById('pass').value === "1203"){
         document.getElementById('lock').style.display = 'none';
         document.getElementById('gift').style.display = 'flex';
     } else {
-        alert("Wrong password 😜 Try the special code!");
+        alert("Wrong password 😜");
     }
 }
 
-// 2. OPEN GIFT & START MUSIC
+// OPEN GIFT + MUSIC START FROM 0.25
 function openGift(){
     document.getElementById('gift').style.display = 'none';
     document.getElementById('menu').style.display = 'flex';
-    
-    // Auto-play music starts here
+
     let audio = document.getElementById('song');
-    audio.play().catch(e => console.log("Audio play failed, will try on next tap"));
+    audio.currentTime = 0.25;
+    audio.play().catch(()=>{});
 }
 
-// 3. NAVIGATION
+// NAVIGATION
 function openPage(p){
     document.getElementById('menu').style.display = 'none';
     document.getElementById(p).style.display = 'flex';
-    if(p === "shayari") {
+
+    if(p === "shayari"){
         i = 0;
         document.getElementById('text').innerHTML = "";
         typeText();
+    }
+
+    if(p === "video"){
+        let vid = document.getElementById('bdayVideo');
+        vid.currentTime = 0;
+        vid.play();
     }
 }
 
 function back(){
     document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
     document.getElementById('menu').style.display = 'flex';
+
+    let vid = document.getElementById('bdayVideo');
+    if(vid){
+        vid.pause();
+        vid.currentTime = 0;
+    }
 }
 
-// 4. TYPING LOGIC
+// TYPING
 function typeText(){
     let el = document.getElementById('text');
     if(i < msg.length){
-        if(msg[i] === "\n") el.innerHTML += "<br>";
-        else el.innerHTML += msg[i];
+        el.innerHTML += msg[i] === "\n" ? "<br>" : msg[i];
         i++;
-        setTimeout(typeText, 50);
+        setTimeout(typeText, 40);
     }
 }
 
-// 5. SLIDESHOW (Optimized with your images)
-setInterval(() => {
-    let imgElement = document.getElementById('slide');
-    if(imgElement && document.getElementById('photos').style.display === 'flex') {
-        imgElement.style.opacity = 0; // Fade out
-        setTimeout(() => {
+// SLIDESHOW
+setInterval(()=>{
+    let img = document.getElementById('slide');
+    if(img && document.getElementById('photos').style.display === 'flex'){
+        img.style.opacity = 0;
+        setTimeout(()=>{
             index = (index + 1) % images.length;
-            imgElement.src = images[index];
-            imgElement.style.opacity = 1; // Fade in
+            img.src = images[index];
+            img.style.opacity = 1;
         }, 500);
     }
-}, 3000);
+},3000);
 
-// 6. FLOAT EFFECTS & SPARKLES
-setInterval(() => {
+// HEART EFFECT
+setInterval(()=>{
     let h = document.createElement('div');
     h.innerHTML = '❤️';
-    h.classList.add('heart');
-    h.style.left = Math.random() * 100 + 'vw';
+    h.className = 'heart';
+    h.style.left = Math.random()*100 + 'vw';
     document.body.appendChild(h);
-    setTimeout(() => h.remove(), 6000);
-}, 450);
+    setTimeout(()=>h.remove(),6000);
+},400);
 
-document.body.addEventListener("click", e => {
-    let spark = document.createElement('div');
-    spark.innerHTML = '✨';
-    spark.style.position = 'fixed';
-    spark.style.left = e.clientX + 'px';
-    spark.style.top = e.clientY + 'px';
-    spark.style.pointerEvents = 'none';
-    spark.style.zIndex = '9999';
-    document.body.appendChild(spark);
-    setTimeout(() => spark.remove(), 600);
-});
-
-// WhatsApp Share
+// SHARE
 function share(){
     let text = "Happy Birthday Shweta ❤️";
-    window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + window.location.href)}`);
+    window.open(`https://wa.me/?text=${encodeURIComponent(text + " " + location.href)}`);
 }
+
 </script>
 
 </body>
